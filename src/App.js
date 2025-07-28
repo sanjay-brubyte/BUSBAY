@@ -1,24 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+
+
+// import React from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import Layout from './components/Layout';
+// import HomePage from './HomePage';
+// import Shop from './pages/Shop'; 
+
+// const Deals = () => <h1>Deals Of The Day</h1>;
+// const BestSeller = () => <h1>Best Seller</h1>;
+// const GiftCards = () => <h1>Gift Cards</h1>;
+// const Sell = () => <h1>Sell On Platform</h1>;
+
+// function App() {
+//   return (
+//     <Router>
+//       <Routes>
+//         <Route path="/" element={<Layout />}>
+//           <Route index element={<HomePage />} />
+//           <Route path="deals" element={<Deals />} />
+//           <Route path="best-seller" element={<BestSeller />} />
+//           <Route path="gift-cards" element={<GiftCards />} />
+//           <Route path="sell" element={<Sell />} />
+//           <Route path="shop" element={<Shop />} /> 
+//         </Route>
+//       </Routes>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import HomePage from './HomePage';
+import Shop from './pages/Shop';
+import ProductDetail from './pages/ProductDetail';
+
+const Deals = () => <h1>Deals Of The Day</h1>;
+const BestSeller = () => <h1>Best Seller</h1>;
+const GiftCards = () => <h1>Gift Cards</h1>;
+const Sell = () => <h1>Sell On Platform</h1>;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="deals" element={<Deals />} />
+          <Route path="best-seller" element={<BestSeller />} />
+          <Route path="gift-cards" element={<GiftCards />} />
+          <Route path="sell" element={<Sell />} />
+          <Route path="shop" element={<Shop />} />
+          <Route path="product/:id" element={<ProductDetail />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
