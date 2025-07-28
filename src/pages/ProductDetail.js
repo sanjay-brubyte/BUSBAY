@@ -1,5 +1,4 @@
 
-
 import React, { useState } from 'react';
 import {
   Box,
@@ -15,7 +14,6 @@ import {
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import { useParams } from 'react-router-dom';
-
 
 const allProducts = [
   {
@@ -261,39 +259,59 @@ const ProductDetailPage = () => {
             ))}
           </Box>
 
-          {/* Quantity */}
-          <Box display="flex" alignItems="center" mt={3} gap={2}>
-            <Button
-              variant="outlined"
-              onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-            >
-              -
-            </Button>
-            <TextField
-              value={quantity}
-              size="small"
-              sx={{ width: 60 }}
-              inputProps={{ style: { textAlign: 'center' }, readOnly: true }}
-            />
-            <Button variant="outlined" onClick={() => setQuantity((prev) => prev + 1)}>
-              +
-            </Button>
+          {/* Combined Box with two lines */}
+          <Box
+            mt={3}
+            sx={{ border: '1px solid #ddd', borderRadius: 1, p: 2 }}
+          >
+            {/* First Line: Add to Cart and Quantity */}
+            <Box display="flex" alignItems="center" mb={2} justifyContent="space-between">
+              {/* Quantity Control */}
+              <Box display="flex" alignItems="center" border="1px solid #ccc" borderRadius={1} marginInlineEnd={10}>
+                <Button
+                  onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+                  sx={{ minWidth: 40 }}
+                >
+                  -
+                </Button>
+                <TextField
+                  value={quantity}
+                  size="small"
+                  inputProps={{ style: { textAlign: 'center' }, readOnly: true }}
+                  sx={{ width: 50 }}
+                />
+                <Button onClick={() => setQuantity((prev) => prev + 1)} sx={{ minWidth: 40 }}>
+                  +
+                </Button>
+              </Box>
+              {/* Add to Cart Button */}
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: 'blue', color: '#fff', ml: 2 }}
+              >
+                Add To Cart
+              </Button>
+            </Box>
 
-            <Button variant="contained" color="primary" sx={{ ml: 2 }}>
-              Add to Cart
-            </Button>
-          </Box>
-
-          <Box display="flex" gap={2} mt={2}>
-            <IconButton color="primary">
-              <FavoriteBorderIcon />
-            </IconButton>
-            <IconButton color="primary">
-              <CompareArrowsIcon />
-            </IconButton>
-            <Button variant="contained" color="success">
-              Buy Now
-            </Button>
+            {/* Second Line: Favorite, Compare, Buy Now */}
+            <Box display="flex" alignItems="center" justifyContent="space-between">
+              {/* Icons */}
+              <Box display="flex" gap={1}>
+                <IconButton sx={{ backgroundColor: '#2196f3', color: '#fff' }}>
+                  <FavoriteBorderIcon />
+                </IconButton>
+                <IconButton sx={{ backgroundColor: '#2196f3', color: '#fff' }}>
+                  <CompareArrowsIcon />
+                </IconButton>
+              </Box>
+              {/* Buy Now Button */}
+              <Button
+                variant="contained"
+                sx={{ backgroundColor: 'green', color: '#fff', ml: 2 }}
+              >
+                Buy Now
+              </Button>
+            </Box>
           </Box>
 
           {/* Extra Info */}
@@ -330,7 +348,6 @@ const ProductDetailPage = () => {
               </Typography>
 
               <Grid container spacing={3}>
-                {/* Left: Average Rating */}
                 <Grid item xs={12} md={4}>
                   <Box textAlign="center" border="1px solid #eee" p={3} borderRadius={2}>
                     <Typography variant="h3" fontWeight="bold" color="primary">
@@ -349,7 +366,6 @@ const ProductDetailPage = () => {
                   </Box>
                 </Grid>
 
-                {/* Right: Star Breakdown */}
                 <Grid item xs={12} md={8}>
                   {[
                     { label: '5 Star', value: 100 },
@@ -374,8 +390,6 @@ const ProductDetailPage = () => {
                   ))}
                 </Grid>
               </Grid>
-
-            
             </Box>
           )}
         </Box>
@@ -385,4 +399,3 @@ const ProductDetailPage = () => {
 };
 
 export default ProductDetailPage;
-
