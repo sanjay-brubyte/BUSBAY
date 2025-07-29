@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import {
   Box,
@@ -178,7 +177,6 @@ const ProductDetailPage = () => {
   return (
     <Box p={4}>
       <Grid container spacing={4}>
-        {/* Left Images */}
         <Grid item xs={12} md={6}>
           <Box border="1px solid #ccc" borderRadius={2} p={2}>
             <img
@@ -204,7 +202,6 @@ const ProductDetailPage = () => {
           </Box>
         </Grid>
 
-        {/* Right Info */}
         <Grid item xs={12} md={6}>
           <Typography variant="h5" fontWeight={600}>
             {product.name}
@@ -225,7 +222,6 @@ const ProductDetailPage = () => {
             sx={{ backgroundColor: '#d4f4dd', color: '#2e7d32', fontWeight: 600, mt: 1 }}
           />
 
-          {/* Colors */}
           <Typography mt={3}>Color</Typography>
           <Box display="flex" gap={1} mt={1}>
             {product.colors.map((color) => (
@@ -244,7 +240,6 @@ const ProductDetailPage = () => {
             ))}
           </Box>
 
-          {/* Storage */}
           <Typography mt={3}>Storage</Typography>
           <Box display="flex" gap={1} mt={1}>
             {product.storageOptions.map((opt) => (
@@ -259,14 +254,16 @@ const ProductDetailPage = () => {
             ))}
           </Box>
 
-          {/* Combined Box with two lines */}
           <Box
             mt={3}
-            sx={{ border: '1px solid #ddd', borderRadius: 1, p: 2 }}
+            sx={{ 
+              border: '1px solid #ddd', 
+              borderRadius: 1, 
+              p: 2, 
+              marginInlineEnd: '318px' 
+            }}
           >
-            {/* First Line: Add to Cart and Quantity */}
             <Box display="flex" alignItems="center" mb={2} justifyContent="space-between">
-              {/* Quantity Control */}
               <Box display="flex" alignItems="center" border="1px solid #ccc" borderRadius={1} marginInlineEnd={10}>
                 <Button
                   onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
@@ -284,7 +281,6 @@ const ProductDetailPage = () => {
                   +
                 </Button>
               </Box>
-              {/* Add to Cart Button */}
               <Button
                 variant="contained"
                 sx={{ backgroundColor: 'blue', color: '#fff', ml: 2 }}
@@ -293,9 +289,7 @@ const ProductDetailPage = () => {
               </Button>
             </Box>
 
-            {/* Second Line: Favorite, Compare, Buy Now */}
             <Box display="flex" alignItems="center" justifyContent="space-between">
-              {/* Icons */}
               <Box display="flex" gap={1}>
                 <IconButton sx={{ backgroundColor: '#2196f3', color: '#fff' }}>
                   <FavoriteBorderIcon />
@@ -304,7 +298,6 @@ const ProductDetailPage = () => {
                   <CompareArrowsIcon />
                 </IconButton>
               </Box>
-              {/* Buy Now Button */}
               <Button
                 variant="contained"
                 sx={{ backgroundColor: 'green', color: '#fff', ml: 2 }}
@@ -314,7 +307,6 @@ const ProductDetailPage = () => {
             </Box>
           </Box>
 
-          {/* Extra Info */}
           <Box mt={3}>
             <Typography variant="body2">SKU: {product.sku}</Typography>
             <Typography variant="body2">Categories: {product.category}</Typography>
@@ -324,7 +316,6 @@ const ProductDetailPage = () => {
         </Grid>
       </Grid>
 
-      {/* Tabs */}
       <Box mt={4}>
         <Tabs value={tabIndex} onChange={(e, newVal) => setTabIndex(newVal)}>
           <Tab label="Description" />
