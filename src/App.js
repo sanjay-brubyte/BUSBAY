@@ -1,5 +1,6 @@
 
 
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
@@ -7,6 +8,7 @@ import HomePage from './HomePage';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
 import CartPage from './pages/CartPage'; 
+import CheckoutPage from './pages/ CheckoutPage';
 
 const Deals = () => <h1>Deals Of The Day</h1>;
 const BestSeller = () => <h1>Best Seller</h1>;
@@ -26,6 +28,7 @@ function App() {
           <Route path="shop" element={<Shop />} />
           <Route path="product/:id" element={<ProductDetail />} />
           <Route path="cart" element={<CartPage />} /> 
+          <Route path="checkout" element={<CheckoutPage />} />
         </Route>
       </Routes>
     </Router>
