@@ -12,7 +12,6 @@ const CartPage = () => {
     const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
     setCartItems(storedCart);
   }, []);
-
   const handleRemove = (index) => {
     const newCart = [...cartItems];
     newCart.splice(index, 1);
