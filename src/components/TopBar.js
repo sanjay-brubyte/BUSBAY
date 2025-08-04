@@ -1,7 +1,3 @@
-
-
-
-
 // import React, { useState } from 'react';
 // import {
 //   AppBar,
@@ -23,6 +19,7 @@
 // import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 // import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 // import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+// import { useNavigate } from 'react-router-dom';
 
 // import logoImg from '../components/logo-video.gif';
 // import LoginRegisterForm from './LoginRegisterForm';
@@ -60,6 +57,7 @@
 
 // const TopBar = () => {
 //   const [loginOpen, setLoginOpen] = useState(false);
+//   const navigate = useNavigate(); 
 
 //   return (
 //     <>
@@ -200,7 +198,10 @@
 //             <IconButton sx={{ height: 40, width: 40 }}>
 //               <AccountBalanceWalletIcon sx={{ color: 'black', fontSize: '28px' }} />
 //             </IconButton>
-//             <IconButton sx={{ height: 40, width: 40 }}>
+//             <IconButton
+//               sx={{ height: 40, width: 40 }}
+//               onClick={() => navigate('/cart')}
+//             >
 //               <Badge badgeContent={0} color="primary">
 //                 <ShoppingCartIcon sx={{ color: 'black', fontSize: '28px' }} />
 //               </Badge>
@@ -226,7 +227,7 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -285,7 +286,22 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const TopBar = () => {
   const [loginOpen, setLoginOpen] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+
+  const [cartCount, setCartCount] = useState(() => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    return cart.reduce((sum, item) => sum + item.quantity, 0);
+  });
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      setCartCount(count);
+    }, 1000); 
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <>
@@ -430,7 +446,7 @@ const TopBar = () => {
               sx={{ height: 40, width: 40 }}
               onClick={() => navigate('/cart')}
             >
-              <Badge badgeContent={0} color="primary">
+              <Badge badgeContent={cartCount} color="primary">
                 <ShoppingCartIcon sx={{ color: 'black', fontSize: '28px' }} />
               </Badge>
             </IconButton>
