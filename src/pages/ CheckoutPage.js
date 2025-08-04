@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import {
   Container,
@@ -21,7 +22,7 @@ import {
   Radio,
   RadioGroup
 } from '@mui/material';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import PersonIcon from '@mui/icons-material/Person';
 
 function Checkout() {
   const [sameAsBilling, setSameAsBilling] = useState(false);
@@ -90,23 +91,14 @@ function Checkout() {
             mb: 1,
           }}
         >
-          <ArrowBackIosIcon fontSize="small" sx={{ mr: 1 }} /> Returning Customer? Click Here To Login
+          <PersonIcon fontSize="small" sx={{ mr: 1 }} />
+          Returning Customer?{' '}
+          <Box component="span" sx={{ borderBottom: '1px solid', ml: 0.5 }}>
+            Click Here To Login
+          </Box>
         </Link>
-        <Link
-          href="#"
-          underline="none"
-          sx={{
-            px: 2,
-            py: 1,
-            borderRadius: 1,
-            color: '#004085',
-            display: 'flex',
-            alignItems: 'center',
-            mb: 1,
-          }}
-        >
-          <ArrowBackIosIcon fontSize="small" sx={{ mr: 1 }} /> Checkout As Guest? Click Here To Checkout
-        </Link>
+
+        
       </Box>
 
       <Box sx={{ p: 1, mb: 4, marginInlineEnd: 80 }}>
@@ -250,7 +242,7 @@ function Checkout() {
           marginLeft: '550px',
           mb: 4,
           marginBottom: '591px',
-          marginTop: '-1574px',
+          marginTop: '-1530px',
         }}
       >
         <Typography variant="h6" gutterBottom>Your Order</Typography>
