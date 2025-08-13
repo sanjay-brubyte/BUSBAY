@@ -35,7 +35,6 @@ const TrackOrderPage = () => {
 
       <Paper sx={{ p: 1, mt: 5, marginRight: 50, marginLeft: -49 }}>
         <Timeline position="right">
-          {/* Timeline items as before */}
           <TimelineItem>
             <TimelineSeparator>
               <TimelineDot variant="outlined" sx={iconStyles}>

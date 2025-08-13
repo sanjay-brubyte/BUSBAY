@@ -1,3 +1,5 @@
+
+
 import React, { useState } from "react";
 import {
   Box,
@@ -34,8 +36,8 @@ const ChangePassword = () => {
           Update Your Password To Keep Your Account Secure.
         </Typography>
         <Typography sx={{ color: "green", fontSize: 14 }}>
-          Change Your Password Regularly To Enhance The Security Of Your Account.  
-          You'll Need Your Current Password To Confirm This Change.
+          Change Your Password Regularly To Enhance The Security Of Your
+          Account. You'll Need Your Current Password To Confirm This Change.
         </Typography>
       </Paper>
 
@@ -105,11 +107,12 @@ const ChangePassword = () => {
       <Button
         variant="contained"
         sx={{
-          mt: 2,
+          width: 50,     
+          height: 35,    
           backgroundColor: "#0066ff",
           "&:hover": { backgroundColor: "#0052cc" },
+          mt: 2,
         }}
-        fullWidth
       >
         UPDATE
       </Button>

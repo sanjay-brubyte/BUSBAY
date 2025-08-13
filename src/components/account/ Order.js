@@ -58,7 +58,6 @@ const OrdersPage = () => {
         alignItems={{ xs: "stretch", sm: "center" }}
       >
         <TextField
-          placeholder="Search..."
           size="small"
           sx={{ width: { xs: "100%", sm: "250px" } }}
           InputProps={{

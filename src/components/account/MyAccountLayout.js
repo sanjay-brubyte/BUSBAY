@@ -72,11 +72,10 @@ export default function MyAccountLayout() {
           </Paper>
         </Grid>
 
-        {/* Right Content */}
         <Grid
           item
           sx={{
-            width: { xs: "100%", sm: "70%" }, // Remaining width
+            width: { xs: "100%", sm: "70%" }, 
           }}
         >
           <Outlet />
