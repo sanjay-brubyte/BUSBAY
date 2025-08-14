@@ -1,4 +1,7 @@
-// import React, { useState } from 'react';
+
+
+
+// import React, { useState, useEffect } from 'react';
 // import {
 //   AppBar,
 //   Toolbar,
@@ -57,7 +60,22 @@
 
 // const TopBar = () => {
 //   const [loginOpen, setLoginOpen] = useState(false);
-//   const navigate = useNavigate(); 
+//   const navigate = useNavigate();
+
+//   const [cartCount, setCartCount] = useState(() => {
+//     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+//     return cart.reduce((sum, item) => sum + item.quantity, 0);
+//   });
+
+//   useEffect(() => {
+//     const intervalId = setInterval(() => {
+//       const cart = JSON.parse(localStorage.getItem('cart')) || [];
+//       const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+//       setCartCount(count);
+//     }, 1000); 
+
+//     return () => clearInterval(intervalId);
+//   }, []);
 
 //   return (
 //     <>
@@ -202,7 +220,7 @@
 //               sx={{ height: 40, width: 40 }}
 //               onClick={() => navigate('/cart')}
 //             >
-//               <Badge badgeContent={0} color="primary">
+//               <Badge badgeContent={cartCount} color="primary">
 //                 <ShoppingCartIcon sx={{ color: 'black', fontSize: '28px' }} />
 //               </Badge>
 //             </IconButton>
@@ -439,9 +457,14 @@ const TopBar = () => {
             <IconButton onClick={() => setLoginOpen(true)} sx={{ height: 40, width: 40 }}>
               <AccountCircleIcon sx={{ color: 'black', fontSize: '28px' }} />
             </IconButton>
-            <IconButton sx={{ height: 40, width: 40 }}>
+
+            <IconButton
+              sx={{ height: 40, width: 40 }}
+              onClick={() => navigate('/wallet')}
+            >
               <AccountBalanceWalletIcon sx={{ color: 'black', fontSize: '28px' }} />
             </IconButton>
+
             <IconButton
               sx={{ height: 40, width: 40 }}
               onClick={() => navigate('/cart')}
