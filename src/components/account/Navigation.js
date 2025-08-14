@@ -1,160 +1,114 @@
-
-
 import React from "react";
-import { Box, Typography, Button, Paper } from "@mui/material";
-import {
-  Timeline,
-  TimelineItem,
-  TimelineSeparator,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot,
-} from "@mui/lab";
+import { Box, Typography, Button } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import WarehouseIcon from "@mui/icons-material/Warehouse";
-import LocalMallIcon from "@mui/icons-material/LocalMall";
+import InventoryIcon from "@mui/icons-material/Inventory";
 import PaymentIcon from "@mui/icons-material/Payment";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import InfoIcon from "@mui/icons-material/Info"; 
+import VisibilityIcon from "@mui/icons-material/Visibility"; 
 import ReceiptIcon from "@mui/icons-material/Receipt"; 
 
-const iconStyles = {
-  border: "none",
-  p: 0,
-  backgroundColor: "transparent",
-  color: "blue"
+const steps = [
+  {
+    icon: <HomeIcon fontSize="medium" color="primary" />,
+    title: "Estimated Delivery Tomorrow",
+    date: "Tomorrow 24 November 2025",
+  },
+  {
+    icon: <LocalShippingIcon fontSize="medium" color="primary" />,
+    title: "Products Ready For Delivery",
+    date: "24 November 2025 Between 15:00 - 17:00",
+    button: "View Order Details",
+  },
+  {
+    icon: <WarehouseIcon fontSize="medium" color="primary" />,
+    title: "Products In The Courier's Warehouse",
+    date: "23 November 2025 At 15:15",
+  },
+  {
+    icon: <InventoryIcon fontSize="medium" color="primary" />,
+    title: "Products Delivered To The Courier - DHL",
+    date: "22 November 2025 At 12:27",
+  },
+  {
+    icon: <PaymentIcon fontSize="medium" color="primary" />,
+    title: "Payment Accepted",
+    date: "19 November 2025 At 10:47",
+  },
+  {
+    icon: <ShoppingCartIcon fontSize="medium" color="primary" />,
+    title: "Order Placed",
+    date: "19 November 2025 At 10:45",
+    button: "View Invoice",
+  },
+];
+
+const getButtonIcon = (label) => {
+  if (label === "View Order Details") return <VisibilityIcon sx={{ fontSize: 18 }} />;
+  if (label === "View Invoice") return <ReceiptIcon sx={{ fontSize: 18 }} />;
+  return null;
 };
 
-const TrackOrderPage = () => {
+const OrderTracking = () => {
   return (
-    <Box sx={{ p: 3 }}>
+    <Box sx={{ p: 3, maxWidth: 600 }}>
       <Typography variant="h6" fontWeight="bold" gutterBottom>
         Track The Delivery Of Order #957684673
       </Typography>
+      {steps.map((step, index) => (
+        <Box
+          key={index}
+          sx={{ display: "flex", alignItems: "flex-start", position: "relative" }}
+        >
+          <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <Box sx={{ position: "relative", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              {index !== 0 && (
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: "-100%",
+                    height: "100%",
+                    borderLeft: "2px dotted #1976d2",
+                  }}
+                />
+              )}
+              {step.icon}
+              {index !== steps.length - 1 && (
+                <Box
+                  sx={{
+                    position: "absolute",
+                    bottom: "-100%",
+                    height: "100%",
+                    borderLeft: "2px dotted #1976d2",
+                  }}
+                />
+              )}
+            </Box>
+          </Box>
 
-      <Paper sx={{ p: 1, mt: 5, marginRight: 50, marginLeft: -49 }}>
-        <Timeline position="right">
-          <TimelineItem>
-            <TimelineSeparator>
-              <TimelineDot variant="outlined" sx={iconStyles}>
-                <HomeIcon />
-              </TimelineDot>
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Typography variant="subtitle1" fontWeight="bold">
-                Estimated Delivery Tomorrow
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Tomorrow 24 November 2025
-              </Typography>
-            </TimelineContent>
-          </TimelineItem>
-
-          <TimelineItem>
-            <TimelineSeparator>
-              <TimelineDot variant="outlined" sx={iconStyles}>
-                <LocalShippingIcon />
-              </TimelineDot>
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Typography variant="subtitle1" fontWeight="bold">
-                Products Ready For Delivery
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                24 November 2025 Between 15:00 - 17:00
-              </Typography>
+          <Box sx={{ ml: 2, pb: 3 }}>
+            <Typography variant="subtitle1" fontWeight="bold">
+              {step.title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {step.date}
+            </Typography>
+            {step.button && (
               <Button
-                size="small"
                 variant="outlined"
-                sx={{ mt: 1 }}
-                startIcon={<InfoIcon />}
-              >
-                View Order Details
-              </Button>
-            </TimelineContent>
-          </TimelineItem>
-
-          <TimelineItem>
-            <TimelineSeparator>
-              <TimelineDot variant="outlined" sx={iconStyles}>
-                <WarehouseIcon />
-              </TimelineDot>
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Typography variant="subtitle1" fontWeight="bold">
-                Products In The Courier's Warehouse
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                23 November 2025 At 15:15
-              </Typography>
-            </TimelineContent>
-          </TimelineItem>
-
-          <TimelineItem>
-            <TimelineSeparator>
-              <TimelineDot variant="outlined" sx={iconStyles}>
-                <LocalMallIcon />
-              </TimelineDot>
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Typography variant="subtitle1" fontWeight="bold">
-                Products Delivered To The Courier - DHL
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                22 November 2025 At 12:27
-              </Typography>
-            </TimelineContent>
-          </TimelineItem>
-
-          <TimelineItem>
-            <TimelineSeparator>
-              <TimelineDot variant="outlined" sx={iconStyles}>
-                <PaymentIcon />
-              </TimelineDot>
-              <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>
-              <Typography variant="subtitle1" fontWeight="bold">
-                Payment Accepted
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                19 November 2025 At 10:47
-              </Typography>
-            </TimelineContent>
-          </TimelineItem>
-
-          <TimelineItem>
-            <TimelineSeparator>
-              <TimelineDot variant="outlined" sx={iconStyles}>
-                <ShoppingCartIcon />
-              </TimelineDot>
-            </TimelineSeparator>
-            <TimelineContent>
-              <Typography variant="subtitle1" fontWeight="bold">
-                Order Placed
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                19 November 2025 At 10:45
-              </Typography>
-              <Button
                 size="small"
-                variant="outlined"
-                sx={{ mt: 1 }}
-                startIcon={<ReceiptIcon />}
+                sx={{ mt: 1, textTransform: "none" }}
+                startIcon={getButtonIcon(step.button)}
               >
-                View Invoice
+                {step.button}
               </Button>
-            </TimelineContent>
-          </TimelineItem>
-        </Timeline>
-      </Paper>
+            )}
+          </Box>
+        </Box>
+      ))}
     </Box>
   );
 };
 
-export default TrackOrderPage;
+export default OrderTracking;

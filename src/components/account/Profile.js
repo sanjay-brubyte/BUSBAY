@@ -1,9 +1,9 @@
 
+
 import React, { useState } from "react";
 import {
   Box,
   Typography,
-  Link,
   TextField,
   Button,
   Grid
@@ -36,49 +36,36 @@ export default function MyProfile() {
     setIsEditing(false);
   };
 
-  const handleCancel = () => {
-    setFormData(initialUserDetails);
-    setIsEditing(false);
-  };
-
   return (
-    <Box>
+    <Box sx={{ width: "100%", maxWidth: 450 }}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography
           variant="h6"
           fontWeight="bold"
-          sx={{ fontSize: "1.2rem" }}
+          sx={{ fontSize: "1rem" }}
         >
           Account Details
         </Typography>
-        {!isEditing ? (
-          <Link
-            component="button"
-            underline="hover"
-            sx={{ color: "#1976d2", fontWeight: 500 }}
-            onClick={() => setIsEditing(true)}
-          >
-            Edit
-          </Link>
-        ) : (
-          <Link
-            component="button"
-            underline="hover"
-            sx={{ color: "red", fontWeight: 500 }}
-            onClick={handleCancel}
-          >
-            Cancel
-          </Link>
+        {!isEditing && (
+          <Box>
+            <Typography
+              component="button"
+              sx={{ color: "#1976d2", fontSize: "0.9rem", cursor: "pointer" }}
+              onClick={() => setIsEditing(true)}
+            >
+              Edit
+            </Typography>
+          </Box>
         )}
       </Box>
 
       {!isEditing ? (
         <Box
-          mt={2}
+          mt={1}
           p={2}
           sx={{
-            border: "1px dashed #ccc",
-            borderRadius: "4px",
+            border: "1px dashed #b71c1c", 
+            borderRadius: "2px",
             backgroundColor: "#fff",
           }}
         >
@@ -87,28 +74,34 @@ export default function MyProfile() {
               key={label}
               display="flex"
               justifyContent="space-between"
-              mb={1.5}
+              mb={1.2}
             >
-              <Typography sx={{ fontWeight: 500 }}>{label} :</Typography>
-              <Typography>{value}</Typography>
+              <Typography sx={{ fontSize: "0.85rem" }}>{label} :</Typography>
+              <Typography
+                sx={{
+                  fontSize: "0.85rem",
+                  fontWeight: label === "Email Address" ? "bold" : "normal",
+                }}
+              >
+                {value}
+              </Typography>
             </Box>
           ))}
         </Box>
       ) : (
         <Box
-          mt={2}
+          mt={1}
           p={2}
           sx={{
-            border: "1px dashed #ccc",
-            borderRadius: "4px",
             backgroundColor: "#fff",
           }}
         >
-          <Grid container spacing={2}>
+          <Grid container spacing={1.5}>
             {Object.entries(formData).map(([label, value]) => (
               <Grid item xs={12} sm={6} key={label}>
                 <TextField
                   fullWidth
+                  size="small"
                   label={label}
                   value={value}
                   onChange={(e) => handleChange(label, e.target.value)}
@@ -117,13 +110,16 @@ export default function MyProfile() {
             ))}
           </Grid>
 
-          <Box mt={2} display="flex" gap={2}>
-            <Button variant="contained" onClick={handleSave}>
-              Save
+          <Box mt={2} display="flex" gap={1.5}>
+            <Button
+              variant="contained"
+              size="small"
+              sx={{ textTransform: "none" }}
+              onClick={handleSave}
+            >
+              Update
             </Button>
-            <Button variant="outlined" color="secondary" onClick={handleCancel}>
-              Cancel
-            </Button>
+       
           </Box>
         </Box>
       )}

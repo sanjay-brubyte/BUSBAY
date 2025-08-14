@@ -1,6 +1,3 @@
-
-
-
 import React, { useState } from "react";
 import {
   Box,
@@ -21,12 +18,12 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import NavigationIcon from "@mui/icons-material/Navigation";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 const OrdersPage = () => {
   const [page, setPage] = useState(1);
   const itemsPerPage = 5;
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const orders = [
     { id: 1, orderId: "Xxx-Xxx-Xxx", date: "May 30, 2025", status: "Processing", amount: "$25.00 For 1 Item" },
@@ -47,29 +44,33 @@ const OrdersPage = () => {
 
   return (
     <Box sx={{ p: 2 }}>
-      <Typography variant="h6" fontWeight="bold" mb={2}>
-        Orders
-      </Typography>
-
       <Stack
         direction={{ xs: "column", sm: "row" }}
         spacing={2}
         mb={2}
-        alignItems={{ xs: "stretch", sm: "center" }}
+        alignItems="center"
+        justifyContent="space-between"
       >
-        <TextField
-          size="small"
-          sx={{ width: { xs: "100%", sm: "250px" } }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon fontSize="small" />
-              </InputAdornment>
-            )
-          }}
-        />
-        <TextField type="date" size="small" />
-        <TextField type="date" size="small" />
+        <Typography variant="h6" fontWeight="bold">
+          Orders
+        </Typography>
+
+        <Stack direction="row" spacing={2} flexWrap="wrap" justifyContent="flex-end">
+          <TextField
+            size="small"
+            sx={{ width: { xs: "100%", sm: "200px" } }}
+            placeholder="Search orders..."
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon fontSize="small" />
+                </InputAdornment>
+              )
+            }}
+          />
+          <TextField type="date" size="small" />
+          <TextField type="date" size="small" />
+        </Stack>
       </Stack>
 
       <TableContainer component={Paper}>
