@@ -11,6 +11,7 @@ const WalletLayout = () => {
     { label: "Transfer", path: "transfer" },
     { label: "History", path: "history" },
     { label: "Address Whitelist", path: "address-whitelist" },
+
   ];
 
   return (

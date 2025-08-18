@@ -1,6 +1,5 @@
 
 
-
 // import React from 'react';
 // import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -18,6 +17,14 @@
 // import Wishlist from './components/account/Wishlist';
 // import Change from './components/account/Change';
 // import Navigation from './components/account/Navigation';
+
+// import WalletLayout from './components/wallet/WalletLayout';
+// import WalletHome from './components/wallet/WalletHome';
+// import Deposit from './components/wallet/Deposit';
+// import Withdrawal from './components/wallet/Withdrawal';
+// import Transfer from './components/wallet/Transfer';
+// import History from './components/wallet/History';
+// import AddressWhitelist from './components/wallet/AddressWhitelist';
 
 // const Deals = () => <h1>Deals Of The Day</h1>;
 // const BestSeller = () => <h1>Best Seller</h1>;
@@ -38,6 +45,15 @@
 //           <Route path="product/:id" element={<ProductDetail />} />
 //           <Route path="cart" element={<CartPage />} />
 //           <Route path="checkout" element={<CheckoutPage />} />
+
+//           <Route path="wallet" element={<WalletLayout />}>
+//             <Route index element={<WalletHome />} />
+//             <Route path="deposit" element={<Deposit />} />
+//             <Route path="withdrawal" element={<Withdrawal />} />
+//             <Route path="transfer" element={<Transfer />} />
+//             <Route path="history" element={<History />} />
+//             <Route path="address-whitelist" element={<AddressWhitelist />} />
+//           </Route>
 
 //           <Route path="account" element={<Navigate to="profile" replace />} />
 //           <Route path="account" element={<MyAccountLayout />}>
@@ -83,6 +99,7 @@ import Withdrawal from './components/wallet/Withdrawal';
 import Transfer from './components/wallet/Transfer';
 import History from './components/wallet/History';
 import AddressWhitelist from './components/wallet/AddressWhitelist';
+import Addwallet from './components/wallet/Addwallet';
 
 const Deals = () => <h1>Deals Of The Day</h1>;
 const BestSeller = () => <h1>Best Seller</h1>;
@@ -99,6 +116,7 @@ function App() {
           <Route path="best-seller" element={<BestSeller />} />
           <Route path="gift-cards" element={<GiftCards />} />
           <Route path="sell" element={<Sell />} />
+
           <Route path="shop" element={<Shop />} />
           <Route path="product/:id" element={<ProductDetail />} />
           <Route path="cart" element={<CartPage />} />
@@ -111,10 +129,11 @@ function App() {
             <Route path="transfer" element={<Transfer />} />
             <Route path="history" element={<History />} />
             <Route path="address-whitelist" element={<AddressWhitelist />} />
+            <Route path="addwallet" element={<Addwallet />} />
           </Route>
 
-          <Route path="account" element={<Navigate to="profile" replace />} />
           <Route path="account" element={<MyAccountLayout />}>
+            <Route index element={<Navigate to="profile" replace />} />
             <Route path="profile" element={<Profile />} />
             <Route path="order" element={<Order />} />
             <Route path="address" element={<Address />} />
