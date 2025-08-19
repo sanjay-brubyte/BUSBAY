@@ -86,7 +86,8 @@ export default function WithdrawForm() {
           sx={{
             backgroundColor: "#1976d2",
             textTransform: "none",
-            px: 4
+            px: 4,
+            marginLeft:48
           }}
           onClick={handleRequest}
         >
