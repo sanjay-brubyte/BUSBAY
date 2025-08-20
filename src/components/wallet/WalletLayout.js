@@ -11,7 +11,6 @@ const WalletLayout = () => {
     { label: "Transfer", path: "transfer" },
     { label: "History", path: "history" },
     { label: "Address Whitelist", path: "address-whitelist" },
-
   ];
 
   return (
@@ -32,21 +31,22 @@ const WalletLayout = () => {
             key={item.path}
             component={NavLink}
             to={item.path}
+            end={item.path === ""}
             fullWidth
             sx={{
               mb: 2,
-              backgroundColor: (navData) =>
-                navData.isActive ? "#0066ff" : "#f5f5f5",
-              color: (navData) => (navData.isActive ? "#fff" : "#000"),
-              boxShadow: "none",
-              "&:hover": {
-                backgroundColor: (navData) =>
-                  navData.isActive ? "#0052cc" : "#eaeaea",
-                boxShadow: "none",
-              },
-              fontWeight: (navData) => (navData.isActive ? "500" : "400"),
               textTransform: "none",
               fontSize: "16px",
+              fontWeight: 500,
+              boxShadow: "none",
+              "&.active": {
+                backgroundColor: "skyblue",
+                color: "#fff",
+              },
+              "&:hover": {
+                backgroundColor: "skyblue",
+                color: "#fff",
+              },
             }}
           >
             {item.label}

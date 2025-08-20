@@ -1,6 +1,3 @@
-
-
-
 import React, { useMemo, useState } from "react";
 import {
   Box,
@@ -45,7 +42,7 @@ const statusColor = (s) =>
 
 export default function AddressWhitelist() {
   const [search, setSearch] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Active");
   const [page, setPage] = useState(1);
   const rowsPerPage = 5;
 
@@ -107,7 +104,8 @@ export default function AddressWhitelist() {
         <Button
           variant="contained"
           sx={{ textTransform: "none", px: 3, backgroundColor: "#1976d2" }}
-          onClick={() => navigate('/wallet/addwallet')}        >
+          onClick={() => navigate('/wallet/addwallet')}
+        >
           Add
         </Button>
       </Box>
