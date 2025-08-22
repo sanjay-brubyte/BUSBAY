@@ -37,14 +37,16 @@ export default function MyProfile() {
   };
 
   return (
-    <Box sx={{ width: "100%", maxWidth: 450 }}>
+    <Box sx={{ width: "100%", maxWidth: 510 }}>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography
           variant="h6"
-          fontWeight="bold"
-          sx={{ fontSize: "1rem" }}
+          fontWeight="samibold"
+          sx={{ fontWeight: 600,
+            fontSize: "16px", }}
         >
           Account Details
+          
         </Typography>
         {!isEditing && (
           <Box>
